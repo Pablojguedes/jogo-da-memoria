@@ -8,11 +8,9 @@ public class Board {
 	private final int NUMBER_OF_COLUMNS = 8;
 	
 	private Card[][] elements;
-	private boolean[][] status; //false is default, true if flipped face up
 	
 	public Board() {
 		elements = new Card[NUMBER_OF_ROWS][NUMBER_OF_COLUMNS];
-		status = new boolean[NUMBER_OF_ROWS][NUMBER_OF_COLUMNS];
 	}
 	
 	public void addElement(int positionX, int positionY, Card element) {
@@ -23,11 +21,11 @@ public class Board {
 		return elements[positionX][positionY];
 	}
 	
-	public boolean getStatus(int positionX, int positionY) {
-		return status[positionX][positionY];
+	public int getRows() {
+		return NUMBER_OF_ROWS;
 	}
 	
-	public void setStatus(int positionX, int positionY, boolean status) {
-		this.status[positionX][positionY] = status;
+	public int getColumns() {
+		return NUMBER_OF_COLUMNS;
 	}
 }

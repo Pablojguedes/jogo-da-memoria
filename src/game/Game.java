@@ -12,14 +12,19 @@ public class Game implements GameLogic{
 	@Override
 	public void start() {
 		initializePlayers();
-		//initializeBoard();
+		initializeBoard();
 	}
 
 	private void initializePlayers() {
 		SecureRandom random = new SecureRandom();
 		int startingPlayer = 1 + random.nextInt(2);
-		player1 = new Player(1, (startingPlayer == 1 ? true : false);
-		player1 = new Player(2, !player1.isCurrentTurn());
+		player1 = new Player(1, (startingPlayer == 1 ? true : false));
+		player2 = new Player(2, !player1.isCurrentTurn());
+	}
+	
+	private void initializeBoard() {
+		Board board = new Board();
+		
 	}
 
 
