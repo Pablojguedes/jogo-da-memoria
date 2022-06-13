@@ -27,7 +27,6 @@ public class Game implements GameLogic{
 		
 	}
 
-
 	@Override
 	public void play() {
 		// TODO Auto-generated method stub
