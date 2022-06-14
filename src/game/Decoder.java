@@ -1,9 +1,21 @@
 package game;
 
+import java.util.List;
+
+import validators.Validator;
+import validators.ValidatorList;
+
 public class Decoder {
 // B5, B e 5
-	public static int[] decodePosition(String position) {
+	public static int[] decodePosition(String position) throws Exception {
+		
 		String[] arrPosition = position.split("");
+		
+		List<Validator> validatorList = ValidatorList.getValidatorsList();
+		
+		for(Validator validator : validatorList)
+			validator.validate(arrPosition);
+		
 		int[] arrDecodedPos = new int [2];
 			switch(arrPosition[0]) {
 			case "A":
