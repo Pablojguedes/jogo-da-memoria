@@ -4,13 +4,10 @@ import entities.Card;
 
 public class Board {
 	
-	private final int NUMBER_OF_ROWS = 8;
-	private final int NUMBER_OF_COLUMNS = 8;
-	
 	private Card[][] elements;
 	
-	public Board() {
-		elements = new Card[NUMBER_OF_ROWS][NUMBER_OF_COLUMNS];
+	public Board(int matrixDimension) {
+		elements = new Card[matrixDimension][matrixDimension];
 	}
 	
 	public void addElement(int positionX, int positionY, Card element) {
@@ -22,10 +19,10 @@ public class Board {
 	}
 	
 	public int getRows() {
-		return NUMBER_OF_ROWS;
+		return elements.length;
 	}
 	
 	public int getColumns() {
-		return NUMBER_OF_COLUMNS;
+		return elements[0].length;
 	}
 }

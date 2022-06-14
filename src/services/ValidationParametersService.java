@@ -1,6 +1,6 @@
-package validators;
+package services;
 
-public class ValidationParameters {
+public class ValidationParametersService {
 	
 	private static final String[] VALID_LETTERS = {"A", "B", "C", "D", "E", "F", "G", "H"};
 	private static final String[] TANGENT_LETTERS = {"I", "J", "K", "L", "M"};

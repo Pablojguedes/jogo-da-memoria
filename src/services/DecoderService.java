@@ -1,17 +1,16 @@
-package game;
+package services;
 
 import java.util.List;
 
 import validators.Validator;
-import validators.ValidatorList;
 
-public class Decoder {
+public class DecoderService {
 // B5, B e 5
 	public static int[] decodePosition(String position) throws Exception {
 		
 		String[] arrPosition = position.split("");
 		
-		List<Validator> validatorList = ValidatorList.getValidatorsList();
+		List<Validator> validatorList = ValidatorListService.getValidatorsList();
 		
 		for(Validator validator : validatorList)
 			validator.validate(arrPosition);

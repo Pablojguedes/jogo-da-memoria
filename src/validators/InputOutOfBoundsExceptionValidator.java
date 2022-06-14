@@ -1,6 +1,7 @@
 package validators;
 
 import exception.InputOutOfBoundsException;
+import services.ValidationParametersService;
 
 public class InputOutOfBoundsExceptionValidator extends Validator {
 
@@ -9,7 +10,7 @@ public class InputOutOfBoundsExceptionValidator extends Validator {
 		
 		Integer number = Integer.parseInt(input[1]);
 		
-		if(ValidationParameters.containsTangentLetter(input[0]) ||
+		if(ValidationParametersService.containsTangentLetter(input[0]) ||
 			number <= 0 ||
 			number > 8)
 			throw new InputOutOfBoundsException("Posição não contida no tabuleiro! Favor digitar outra");

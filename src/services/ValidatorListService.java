@@ -1,9 +1,14 @@
-package validators;
+package services;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ValidatorList {
+import validators.InputOutOfBoundsExceptionValidator;
+import validators.InvalidInputExceptionValidator;
+import validators.RepeatedPositionExceptionValidator;
+import validators.Validator;
+
+public class ValidatorListService {
 	
 	public static List<Validator> getValidatorsList(){
 		

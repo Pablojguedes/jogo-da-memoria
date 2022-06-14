@@ -1,8 +1,10 @@
 package game;
 
+import java.io.IOException;
+
 public interface GameLogic {
 	
-	public void start();
+	public void start() throws IOException;
 	
 	public void play();
 	
