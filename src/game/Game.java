@@ -4,15 +4,20 @@ import java.security.SecureRandom;
 
 import entities.Player;
 
+import java.util.Scanner;
+
 public class Game implements GameLogic{
 
 	Player player1, player2;
 	Board board;
+	Boolean running;
 	
 	@Override
 	public void start() {
+		Scanner sc = new Scanner(System.in);
 		initializePlayers();
 		initializeBoard();
+		this.running = true;
 	}
 
 	private void initializePlayers() {
@@ -29,7 +34,15 @@ public class Game implements GameLogic{
 
 	@Override
 	public void play() {
-		// TODO Auto-generated method stub
+		start();
+		while(this.running == true) {
+			if (player1.isCurrentTurn() == true) {
+				System.out.println("Player 1, favor inserir posição da carta (linha e coluna):");
+				
+			} else {
+				System.out.println("Player 2, favor inserir posição da carta (linha e coluna):");
+			}
+		}
 		
 	}
 	
