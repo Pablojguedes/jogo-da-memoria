@@ -24,7 +24,6 @@ public class Game implements GameLogic{
 	
 	private void initializeBoard() {
 		Board board = new Board();
-		
 	}
 
 	@Override

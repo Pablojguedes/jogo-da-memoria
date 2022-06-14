@@ -2,11 +2,10 @@ package validators;
 
 import exception.InputOutOfBoundsException;
 
-public class InputOutOfBoundsExceptionValidator extends Validator{
+public class InputOutOfBoundsExceptionValidator extends Validator {
 
 	@Override
-	public void validate(String input) throws InputOutOfBoundsException {
+	public void validate(String[] input) throws InputOutOfBoundsException {
 		
 	}
-
 }
