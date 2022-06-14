@@ -39,6 +39,14 @@ public class Game implements GameLogic{
     private void shuffle() {
     	ShuffleService.shuffle(board, cardNames.getNames());
     }
+    
+    public void testPrint() {
+    	for(int i = 0; i < board.getRows(); i++) {
+    		for(int j = 0; j < board.getColumns(); j++)
+    			System.out.print(board.getElement(i, j));
+    		System.out.println();
+    	}
+    }
 
     @Override
     public void play() {

@@ -10,23 +10,28 @@ import game.Board;
 
 public class ShuffleService {
 	
-	private static Set<Integer> positionsUsed = new TreeSet<>();
-	
 	public static void shuffle(Board board, List<String> names) {
 		
+		int index = 0;
+		Set<Integer> positionsUsed = new TreeSet<>();
 		SecureRandom random = new SecureRandom();
 		
 		int position = random.nextInt(names.size() * 2);
 		positionsUsed.add(position);
 		
 		for(int i = 0; i < names.size() * 2; i++) {
-			if(i == names.size())
-				i = 0;
-		
+			if(i < names.size())
+				index = i;
+			else
+				index = i - names.size();
+			
 			board.addElement(
 				position / board.getRows(), 
 				position % board.getColumns(), 
-				new Card(names.get(i)));
+				new Card(names.get(index)));
+			
+			if(i == names.size() * 2 - 1)
+				break;
 			
 			while(positionsUsed.contains(position))
 				position = random.nextInt(names.size() * 2);

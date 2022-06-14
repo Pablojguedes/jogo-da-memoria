@@ -21,4 +21,9 @@ public class Card {
 	public void setFlipped(boolean isFlipped) {
 		this.isFlipped = isFlipped;
 	}
+
+	@Override
+	public String toString() {
+		return "[" + name.charAt(0) + "]";
+	}
 }
