@@ -72,8 +72,10 @@ public class Game implements GameLogic{
 	        		firstCardFacedUpPosition = boardPosition;
 	        	else
 	        		checkIfMatched();
-	        	if(matched)
+	        	if(matched) {
 	        		play = 1;
+	        		System.out.println("Acertou! Você ganhou 1 nova jogada!");
+	        	}
         	}
         	checkIfOver();
         	switchTurns();
@@ -109,11 +111,12 @@ public class Game implements GameLogic{
     			player1.addScore(); 
     		else
     			player2.addScore();
+    		matched = true;
     	}
+    	
     	else {
     		board.flipCardFaceDown(firstCardFacedUpPosition[0], firstCardFacedUpPosition[1]);
     		board.flipCardFaceDown(boardPosition[0], boardPosition[1]);
-    		matched = true;
     	}
     	
     }

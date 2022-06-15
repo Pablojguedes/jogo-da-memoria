@@ -15,7 +15,7 @@ public class DecoderService {
 		for(Validator validator : validatorList)
 			validator.validate(arrPosition);
 		
-		arrPosition[0].toUpperCase();
+		arrPosition[0] = arrPosition[0].toUpperCase();
 		
 		int[] arrDecodedPos = new int [2];
 			switch(arrPosition[0]) {
@@ -43,7 +43,7 @@ public class DecoderService {
 			case "H":
 				arrDecodedPos[0] = 7;
 				break;
-				}
+			}
 			
 			arrDecodedPos[1] = Integer.parseInt(arrPosition[1]) - 1;
 			
