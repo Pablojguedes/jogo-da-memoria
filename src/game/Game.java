@@ -56,9 +56,12 @@ public class Game implements GameLogic{
     public void play() {
         while(this.running == true) {
         	printCurrentTurnPlayer();
-        	String cardPosition = sc.nextLine();
-            decode(cardPosition);
         	
+        	validPlay = false;
+        	while(!validPlay) {
+        		String cardPosition = sc.nextLine();
+        		decode(cardPosition);
+        	}
             
         }
         
@@ -71,6 +74,7 @@ public class Game implements GameLogic{
     }
     
     private void decode(String position) {
+    	validPlay = true;
     	try {
     		DecoderService.decodePosition(position);
     	}
@@ -78,7 +82,6 @@ public class Game implements GameLogic{
     		validPlay = false;
     		System.out.println(e.getMessage());
     	}
-    	validPlay = true;
     }
     
     @Override
@@ -86,5 +89,4 @@ public class Game implements GameLogic{
         // TODO Auto-generated method stub
         
     }
-
 }
