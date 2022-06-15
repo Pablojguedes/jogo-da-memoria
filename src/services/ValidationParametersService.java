@@ -2,8 +2,8 @@ package services;
 
 public class ValidationParametersService {
 	
-	private static final String[] VALID_LETTERS = {"A", "B", "C", "D", "E", "F", "G", "H"};
-	private static final String[] TANGENT_LETTERS = {"I", "J", "K", "L", "M"};
+	private static final String[] VALID_LETTERS = {"A", "B", "C", "D", "E", "F", "G", "H", "a", "b", "c", "d", "e", "f", "g", "h"};
+	private static final String[] TANGENT_LETTERS = {"I", "J", "K", "L", "M", "i", "j", "k", "l", "m"};
 	private static final String[] VALID_NUMBERS = {"1", "2", "3", "4", "5", "6", "7", "8"};
 	
 	public static boolean containsLetter(String letter) {

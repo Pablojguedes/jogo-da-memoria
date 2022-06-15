@@ -6,6 +6,9 @@ import java.util.Scanner;
 
 import entities.CardNames;
 import entities.Player;
+import exception.InputOutOfBoundsException;
+import exception.InvalidInputException;
+import services.DecoderService;
 import services.ShuffleService;
 
 public class Game implements GameLogic{
@@ -13,11 +16,12 @@ public class Game implements GameLogic{
     Player player1, player2;
     Board board;
     CardNames cardNames;
-    Boolean running;
+    Boolean running, validPlay;
+    Scanner sc;
     
     @Override
     public void start() throws IOException {
-        Scanner sc = new Scanner(System.in);
+        sc = new Scanner(System.in);
         initializePlayers();
         initializeBoard();
         shuffle();
@@ -51,14 +55,30 @@ public class Game implements GameLogic{
     @Override
     public void play() {
         while(this.running == true) {
-            if (player1.isCurrentTurn() == true) {
-                System.out.println("Player 1, favor inserir posição da carta (linha e coluna):");
-                
-            } else {
-                System.out.println("Player 2, favor inserir posição da carta (linha e coluna):");
-            }
+        	printCurrentTurnPlayer();
+        	String cardPosition = sc.nextLine();
+            decode(cardPosition);
+        	
+            
         }
         
+    }
+    
+    private void printCurrentTurnPlayer() {
+    	System.out.printf("%s%s%n",
+			(player1.isCurrentTurn() ? "Player 1" : "Player 2"),
+			", favor inserir posição da carta (linha e coluna):");
+    }
+    
+    private void decode(String position) {
+    	try {
+    		DecoderService.decodePosition(position);
+    	}
+    	catch (Exception e) {
+    		validPlay = false;
+    		System.out.println(e.getMessage());
+    	}
+    	validPlay = true;
     }
     
     @Override

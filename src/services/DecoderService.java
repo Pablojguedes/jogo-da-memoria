@@ -15,6 +15,8 @@ public class DecoderService {
 		for(Validator validator : validatorList)
 			validator.validate(arrPosition);
 		
+		arrPosition[0].toUpperCase();
+		
 		int[] arrDecodedPos = new int [2];
 			switch(arrPosition[0]) {
 			case "A":
