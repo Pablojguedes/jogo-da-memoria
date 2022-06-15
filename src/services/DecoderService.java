@@ -2,11 +2,13 @@ package services;
 
 import java.util.List;
 
+import game.Board;
+import validators.RepeatedPositionExceptionValidator;
 import validators.Validator;
 
 public class DecoderService {
 // B5, B e 5
-	public static int[] decodePosition(String position) throws Exception {
+	public static int[] decodePosition(String position, Board board) throws Exception {
 		
 		String[] arrPosition = position.split("");
 		
@@ -46,6 +48,8 @@ public class DecoderService {
 			}
 			
 			arrDecodedPos[1] = Integer.parseInt(arrPosition[1]) - 1;
+			
+			RepeatedPositionExceptionValidator.validateIfNotRepeated(arrDecodedPos, board);
 			
 			return arrDecodedPos;
 			

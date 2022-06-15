@@ -73,14 +73,13 @@ public class Game implements GameLogic{
 	        	else
 	        		checkIfMatched();
 	        	if(matched) {
-	        		play = 1;
+	        		play = 0;
 	        		System.out.println("Acertou! Você ganhou 1 nova jogada!");
 	        	}
         	}
         	checkIfOver();
         	switchTurns();
     	}
-        
     }
     
     private void printCurrentTurnPlayer() {
@@ -92,7 +91,7 @@ public class Game implements GameLogic{
     private void decode(String position) {
     	validPlay = true;
     	try {
-    		boardPosition = DecoderService.decodePosition(position);
+    		boardPosition = DecoderService.decodePosition(position, board);
     	}
     	catch (Exception e) {
     		validPlay = false;
@@ -130,6 +129,11 @@ public class Game implements GameLogic{
     	player1.changeTurn();
     	player2.changeTurn();
     }
+    
+    public Board getCurrentBoard() {
+    	return board;
+    }
+    
     @Override
     public void finish() {
         // TODO Auto-generated method stub

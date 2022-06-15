@@ -31,7 +31,7 @@ public class Board {
 	}
 	
 	public void flipCardFaceDown(int positionX, int positionY) {
-		elements[positionX][positionY].setFlipped(true);
+		elements[positionX][positionY].setFlipped(false);
 	}
 	
 	public boolean isAllFacedUp() {
