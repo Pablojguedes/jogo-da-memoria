@@ -25,4 +25,20 @@ public class Board {
 	public int getColumns() {
 		return elements[0].length;
 	}
+	
+	public void flipCardFaceUp(int positionX, int positionY) {
+		elements[positionX][positionY].setFlipped(true);
+	}
+	
+	public void flipCardFaceDown(int positionX, int positionY) {
+		elements[positionX][positionY].setFlipped(true);
+	}
+	
+	public boolean isAllFacedUp() {
+		for(int i = 0; i < elements.length; i++)
+			for(int j = 0; j < elements[i].length; j++)
+				if(!elements[i][j].isFlipped())
+					return false;
+		return true;
+	}
 }

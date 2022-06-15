@@ -16,8 +16,9 @@ public class Game implements GameLogic{
     Player player1, player2;
     Board board;
     CardNames cardNames;
-    Boolean running, validPlay;
+    Boolean running, validPlay, matched;
     Scanner sc;
+    int[] boardPosition, firstCardFacedUpPosition;
     
     @Override
     public void start() throws IOException {
@@ -55,15 +56,28 @@ public class Game implements GameLogic{
     @Override
     public void play() {
         while(this.running == true) {
-        	printCurrentTurnPlayer();
-        	
-        	validPlay = false;
-        	while(!validPlay) {
-        		String cardPosition = sc.nextLine();
-        		decode(cardPosition);
+        
+        	for(int play = 1; play <= 2; play++) {
+        		printCurrentTurnPlayer();
+	        	validPlay = false;
+	        	matched = false;
+	        	
+	        	while(!validPlay) {
+	        		String cardPosition = sc.nextLine();
+	        		decode(cardPosition);
+	        	}
+	            
+	        	flipCardFaceUp();
+	        	if(play == 1)
+	        		firstCardFacedUpPosition = boardPosition;
+	        	else
+	        		checkIfMatched();
+	        	if(matched)
+	        		play = 1;
         	}
-            
-        }
+        	checkIfOver();
+        	switchTurns();
+    	}
         
     }
     
@@ -76,7 +90,7 @@ public class Game implements GameLogic{
     private void decode(String position) {
     	validPlay = true;
     	try {
-    		DecoderService.decodePosition(position);
+    		boardPosition = DecoderService.decodePosition(position);
     	}
     	catch (Exception e) {
     		validPlay = false;
@@ -84,6 +98,35 @@ public class Game implements GameLogic{
     	}
     }
     
+    private void flipCardFaceUp() {
+    	board.flipCardFaceUp(boardPosition[0], boardPosition[1]);
+    }
+    
+    private void checkIfMatched() {
+    	if(board.getElement(firstCardFacedUpPosition[0], firstCardFacedUpPosition[1])
+			.equals(board.getElement(boardPosition[0], boardPosition[1]))) {
+    		if(player1.isCurrentTurn())
+    			player1.addScore(); 
+    		else
+    			player2.addScore();
+    	}
+    	else {
+    		board.flipCardFaceDown(firstCardFacedUpPosition[0], firstCardFacedUpPosition[1]);
+    		board.flipCardFaceDown(boardPosition[0], boardPosition[1]);
+    		matched = true;
+    	}
+    	
+    }
+    
+    private void checkIfOver() {
+    	if(board.isAllFacedUp())
+    		running = false;
+    }
+    
+    private void switchTurns() {
+    	player1.changeTurn();
+    	player2.changeTurn();
+    }
     @Override
     public void finish() {
         // TODO Auto-generated method stub

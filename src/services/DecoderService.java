@@ -45,7 +45,7 @@ public class DecoderService {
 				break;
 				}
 			
-			arrDecodedPos[1] = Integer.parseInt(arrPosition[1]);
+			arrDecodedPos[1] = Integer.parseInt(arrPosition[1]) - 1;
 			
 			return arrDecodedPos;
 			
